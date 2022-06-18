@@ -1,25 +1,35 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <h2 id="my-app">App</h2>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/products">Products</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <div v-if="showHeader">
+    <Header/>
+  </div>
 
-  <RouterView />
+  <button v-on:click="showHeader = !showHeader">Toggle header</button>
+  <h2>App</h2>
+
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
+
+  <router-view></router-view>
 </template>
 
-<style scoped>
-/*@import "@/assets/app.css";*/
-#my-app{
-  background-color: aqua;
+<script>
+
+import Header from '@/components/Header.vue';
+
+export default {
+  components: {Header},
+  data() {
+    return {
+      count: 0,
+      showHeader: false,
+    }
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  updated() {
+    console.log('updated')
+  }
 }
-</style>
+</script>
+
