@@ -1,25 +1,28 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
-  <h2 id="my-app">App</h2>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/products">Products</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <h2>App</h2>
+  {{count}}
+  <button v-on:click="count++">Add</button>
 
-  <RouterView />
+  <router-link to="/">Home</router-link>
+  <router-link to="/about">About</router-link>
+  <router-view></router-view>
 </template>
 
+<script setup>
+import {onMounted, onUpdated, ref} from "vue";
+
+const count = ref(0)
+
+onMounted(() => {
+  console.log('onMounted')
+})
+
+onUpdated(() => {
+  console.log('onUpdated')
+})
+
+</script>
+
 <style scoped>
-/*@import "@/assets/app.css";*/
-#my-app{
-  background-color: aqua;
-}
+
 </style>
