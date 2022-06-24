@@ -1,17 +1,25 @@
 <template>
-  <img
-      :src="imageSrc"
-      class="my-default-class"
-      :class="{'my-class':is_admin,'my-other-class':is_admin}">
+  <!--  <span v-show="showHeader">-->
+  <!--    <Header />-->
+  <!--  </span>-->
+  <!--  <template v-if="showHeader">-->
+  <!--    <Header />-->
+  <!--  </template>-->
+  <!--  <template v-else>Sem header!!!</template>-->
   <h2>Lista de Usuários</h2>
   <ul>
     <li v-for="user in users" :key="user.id">
-      {{ user.firstName }}
+        {{ user.firstName }}
       <button v-if="user.is_admin">Admin</button>
       <button v-else>Usuário</button>
     </li>
   </ul>
-
+  <!--  <h2>Lista de Usuários</h2>-->
+  <!--  <ul>-->
+  <!--    <li v-for="user in users" :key="user.id">-->
+  <!--      {{ user.firstName }}-->
+  <!--    </li>-->
+  <!--  </ul>-->
 </template>
 
 <script>
@@ -24,10 +32,7 @@ export default {
   data() {
     return {
       users: [],
-      showHeader: true,
-      imageSrc: "https://picsum.photos/200/300",
-      imageClass: 'my-class',
-      is_admin: true
+      showHeader: true
     }
   },
 
@@ -42,14 +47,4 @@ export default {
 
 }
 </script>
-
-<style scoped>
-.my-class {
-  border: solid 4px red;
-}
-
-.my-other-class {
-  border: solid 4px blue;
-}
-</style>
 
